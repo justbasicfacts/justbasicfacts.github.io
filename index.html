@@ -23,14 +23,43 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-family='system-ui,sans-serif' font-size='30' font-weight='700' fill='%23fff' text-anchor='middle'%3EAO%3C/text%3E%3C/svg%3E"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Roboto Condensed, self-hosted: one variable file per subset instead of a
+      render-blocking third-party stylesheet, so the text can paint as soon as
+      the document and its own CSS arrive.
+    -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/roboto-condensed-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <script type="module" crossorigin src="/assets/index-DUO9Z31n.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ERQcrGMR.css">
+    <style>
+      @font-face {
+        font-family: 'Roboto Condensed';
+        font-style: normal;
+        font-weight: 300 700;
+        font-display: swap;
+        src: url('/fonts/roboto-condensed-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'Roboto Condensed';
+        font-style: normal;
+        font-weight: 300 700;
+        font-display: swap;
+        src: url('/fonts/roboto-condensed-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BQPLLbKy.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CUES6IEf.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
