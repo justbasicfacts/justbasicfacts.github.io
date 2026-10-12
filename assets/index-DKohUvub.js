@@ -1613,12 +1613,12 @@
                         color="text.secondary"
                         >${t.period}</ui-typography
                       >
-                      ${t.location!==y.location?a`<ui-typography
-                            class="tl-meta"
-                            variant="caption"
-                            color="text.secondary"
-                            >${t.location}</ui-typography
-                          >`:l}
+                      <ui-typography
+                        class="tl-meta"
+                        variant="caption"
+                        color="text.secondary"
+                        >${t.location}</ui-typography
+                      >
                       <ui-typography class="tl-summary" variant="body2"
                         >${t.summary}</ui-typography
                       >
