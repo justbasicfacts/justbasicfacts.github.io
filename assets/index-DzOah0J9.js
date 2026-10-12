@@ -1177,9 +1177,10 @@
             href=${u.linkedin}
             target="_blank"
             rel="noopener"
+            underline="none"
             >Connect on LinkedIn ${F}</ui-link
           >
-          <ui-link class="cta cta-ghost" href="#work"
+          <ui-link class="cta cta-ghost" href="#work" underline="none"
             >See selected work</ui-link
           >
         </div>
@@ -1441,6 +1442,7 @@
             href=${x.url}
             target="_blank"
             rel="noopener"
+            underline="hover"
             >Last.fm profile ${F}</ui-link
           >
           <ui-typography class="life-source" variant="caption"
@@ -1488,6 +1490,7 @@
                       href=${u.strava}
                       target="_blank"
                       rel="noopener"
+                      underline="hover"
                       >Strava profile ${F}</ui-link
                     >`}
               </ui-card>
