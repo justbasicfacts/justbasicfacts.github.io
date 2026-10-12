@@ -1,23 +1,47 @@
 {
-  "updated": "2026-10-12T00:00:00.000Z",
+  "updated": "2026-10-12T12:39:09.253Z",
   "strava": {
     "groups": [
       {
         "title": "This year",
         "stats": [
-          { "value": "82", "label": "rides" },
-          { "value": "3,287 km", "label": "distance" },
-          { "value": "11,776 m", "label": "climbed" },
-          { "value": "137 h", "label": "in the saddle" }
+          {
+            "value": "82",
+            "label": "rides"
+          },
+          {
+            "value": "3,287 km",
+            "label": "distance"
+          },
+          {
+            "value": "11,776 m",
+            "label": "climbed"
+          },
+          {
+            "value": "137 h",
+            "label": "in the saddle"
+          }
         ]
       },
       {
         "title": "All time",
         "stats": [
-          { "value": "1,318", "label": "rides" },
-          { "value": "50,529 km", "label": "distance" },
-          { "value": "366,560 m", "label": "climbed" },
-          { "value": "2,117 h", "label": "in the saddle" }
+          {
+            "value": "1,318",
+            "label": "rides"
+          },
+          {
+            "value": "50,529 km",
+            "label": "distance"
+          },
+          {
+            "value": "366,560 m",
+            "label": "climbed"
+          },
+          {
+            "value": "2,117 h",
+            "label": "in the saddle"
+          }
         ]
       }
     ],
@@ -30,17 +54,44 @@
   },
   "lastfm": {
     "stats": [
-      { "value": "75,852", "label": "scrobbles" },
-      { "value": "4,243", "label": "artists" },
-      { "value": "414", "label": "loved tracks" }
+      {
+        "value": "75,868",
+        "label": "scrobbles"
+      },
+      {
+        "value": "4,243",
+        "label": "artists"
+      },
+      {
+        "value": "414",
+        "label": "loved tracks"
+      }
     ],
     "topArtists": [
-      { "name": "Lera Lynn", "plays": 140 },
-      { "name": "Egg", "plays": 77 },
-      { "name": "Turnstile", "plays": 35 },
-      { "name": "The Warning", "plays": 27 },
-      { "name": "Angel Du$t", "plays": 20 }
+      {
+        "name": "Lera Lynn",
+        "plays": 156
+      },
+      {
+        "name": "Egg",
+        "plays": 77
+      },
+      {
+        "name": "Turnstile",
+        "plays": 35
+      },
+      {
+        "name": "The Warning",
+        "plays": 27
+      },
+      {
+        "name": "Angel Du$t",
+        "plays": 20
+      }
     ],
-    "nowPlaying": null
+    "nowPlaying": {
+      "track": "What Is This Body?",
+      "artist": "Lera Lynn"
+    }
   }
 }
