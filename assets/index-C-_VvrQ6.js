@@ -1413,7 +1413,6 @@
             <span class="spacer"></span>
             <nav class="nav" aria-label="Sections">
               ${te.map(t=>a`<ui-button
-                  
                   href="#${t.id}"
                   data-nav="${t.id}"
                   variant="ghost"
@@ -1426,7 +1425,6 @@
             <ui-tooltip content="Switch theme" position="bottom">
               <ui-icon-button
                 label="Switch between dark and light theme"
-                
                 @click=${this.toggleTheme}
               >
                 ${Ft()==="dark"?pi:di}
@@ -1496,7 +1494,6 @@
                         >${t.value}</ui-typography
                       >
                       <ui-typography
-                        
                         variant="overline"
                         color="text.secondary"
                         >${t.label}</ui-typography
@@ -1770,7 +1767,6 @@
                   >${e.name}</ui-typography
                 >
                 <ui-typography
-                  
                   variant="caption"
                   color="text.secondary"
                   >${ce(e.plays)} plays</ui-typography
@@ -1783,16 +1779,16 @@
                   ${t.nowPlaying.artist}.`:a`Stuck on <strong>${t.nowPlaying.track}</strong> by
                   ${t.nowPlaying.artist} right now.`}</ui-typography
             >`:l}
-        <ui-button
-          class="life-link"
-          href=${w.url}
-          target="_blank"
-          rel="noopener"
-          variant="ghost"
-          size="sm"
-          text-transform="none"
-          >Last.fm profile ${le}</ui-button
-        >
+        <ui-typography class="life-link" variant="subtitle2" component="p">
+          <ui-link
+            href=${w.url}
+            target="_blank"
+            rel="noopener"
+            color="primary"
+            underline="always"
+            >Last.fm profile ${le}</ui-link
+          >
+        </ui-typography>
         <ui-typography
           class="life-source"
           variant="caption"
@@ -1829,16 +1825,16 @@
                   <ui-typography variant="body2">${e}</ui-typography>
                 </li>`)}
             </ul>`:l}
-        ${a`<ui-button
-              class="life-link"
-              href=${y.strava}
-              target="_blank"
-              rel="noopener"
-              variant="ghost"
-              size="sm"
-              text-transform="none"
-              >Strava profile ${le}</ui-button
-            >`}
+        ${a`<ui-typography class="life-link" variant="subtitle2" component="p">
+              <ui-link
+                href=${y.strava}
+                target="_blank"
+                rel="noopener"
+                color="primary"
+                underline="always"
+                >Strava profile ${le}</ui-link
+              >
+            </ui-typography>`}
       </ui-card>
     `}}customElements.define("life-ride-card",Ii);class Li extends v{constructor(){super(...arguments),this.cards=ki}static{this.properties={cards:{state:!0}}}wired(){Bi(()=>void this.refresh())}async refresh(){await Ti(this.cards,t=>{this.cards=t})}render(){const{cards:t}=this;return a`
       <section class="section" id="offscreen" aria-labelledby="offscreen-title">
@@ -1867,12 +1863,11 @@
               color="text.secondary"
               >From the bike. More on
               <ui-link
-                
                 href=${y.instagram}
                 target="_blank"
                 rel="noopener"
                 color="primary"
-                underline="hover"
+                underline="always"
                 >Instagram</ui-link
               >.</ui-typography
             >
@@ -1910,13 +1905,11 @@
                   ${hi}
                   <span class="label">
                     <ui-typography
-                      
                       variant="subtitle2"
                       component="h3"
                       >LinkedIn</ui-typography
                     >
                     <ui-typography
-                      
                       variant="caption"
                       color="text.secondary"
                       >linkedin.com/in/anilokay</ui-typography
@@ -1932,13 +1925,11 @@
                   ${gi}
                   <span class="label">
                     <ui-typography
-                      
                       variant="subtitle2"
                       component="h3"
                       >GitHub</ui-typography
                     >
                     <ui-typography
-                      
                       variant="caption"
                       color="text.secondary"
                       >github.com/justbasicfacts</ui-typography
@@ -1954,13 +1945,11 @@
                         ${mi}
                         <span class="label">
                           <ui-typography
-                            
                             variant="subtitle2"
                             component="h3"
                             >Email</ui-typography
                           >
                           <ui-typography
-                            
                             variant="caption"
                             color="text.secondary"
                             >${y.email} · click to copy</ui-typography
@@ -1978,14 +1967,12 @@
         <ui-container max-width="lg">
           <div class="footer-inner">
             <ui-typography
-              
               variant="caption"
               color="text.secondary"
               >© ${new Date().getFullYear()} ${y.name} · Berlin,
               Germany</ui-typography
             >
             <ui-typography
-              
               variant="caption"
               color="text.secondary"
             >
@@ -1993,12 +1980,10 @@
               design tokens.
             </ui-typography>
             <ui-typography
-              
               variant="caption"
               color="text.secondary"
             >
               ${t.map((e,r)=>a`${r?" · ":""}<ui-link
-                    
                     href=${e.href}
                     target="_blank"
                     rel="noopener"
