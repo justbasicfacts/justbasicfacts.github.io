@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T12:39:09.253Z",
+  "updated": "2026-10-13T18:08:09.698Z",
   "strava": {
     "groups": [
       {
@@ -55,7 +55,7 @@
   "lastfm": {
     "stats": [
       {
-        "value": "75,868",
+        "value": "75,942",
         "label": "scrobbles"
       },
       {
@@ -70,11 +70,11 @@
     "topArtists": [
       {
         "name": "Lera Lynn",
-        "plays": 156
+        "plays": 176
       },
       {
         "name": "Egg",
-        "plays": 77
+        "plays": 88
       },
       {
         "name": "Turnstile",
@@ -85,13 +85,9 @@
         "plays": 27
       },
       {
-        "name": "Angel Du$t",
-        "plays": 20
+        "name": "Megadeth",
+        "plays": 23
       }
-    ],
-    "nowPlaying": {
-      "track": "What Is This Body?",
-      "artist": "Lera Lynn"
-    }
+    ]
   }
 }
