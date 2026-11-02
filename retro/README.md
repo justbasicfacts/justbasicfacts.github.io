@@ -27,7 +27,7 @@ https://anilokay.com/?retro=0   never show it this time
 ```
 cd ~/portfolio
 pnpm dev
-# http://localhost:5173/retro/index1.htm   (frame set)
+# http://localhost:5173/retro/index.htm    (frame set)
 # http://localhost:5173/retro/index2.htm   (no frames, what the roll lands on)
 ```
 
@@ -40,7 +40,7 @@ the real entry point.
 
 | file             | what it is                                                |
 |------------------|-----------------------------------------------------------|
-| `index1.htm`     | the frame set, and the no-frames fallback                  |
+| `index.htm`      | the frame set, and the no-frames fallback                  |
 | `menu.htm`       | left frame: beveled nav buttons, side notes, badges, counter |
 | `index2.htm`     | welcome page: greeting, what's new, quick facts, side boxes |
 | `about.htm`      | the longer about text, fact table, likes and dislikes      |
@@ -61,7 +61,7 @@ this folder does not follow it.
   no binary background images.
 - The portrait and the ride photos come from `/portrait.jpg` and `/photos/`, the same
   files the proper site uses. No copies live here.
-- Below 760px wide, `index1.htm` sends the browser to `index2.htm`. A frame set is
+- Below 760px wide, `index.htm` sends the browser to `index2.htm`. A frame set is
   unreadable on a phone, and the plain pages carry their own nav row at the top.
 - Inside the frame set `retro.js` hides that nav row, since the menu frame already has
   the links.
