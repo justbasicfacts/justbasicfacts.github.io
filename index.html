@@ -19,6 +19,30 @@
     <meta property="og:url" content="https://justbasicfacts.github.io/" />
     <meta name="twitter:card" content="summary" />
     <meta name="theme-color" content="#0a0c0f" />
+    <script>
+      /*
+        One visitor in twenty gets the other face of this site: a homepage from
+        1997, served from /retro/. It runs before anything paints, once per tab,
+        never for crawlers, and it leaves a way out:
+          ?retro=1  always show the retro page
+          ?retro=0  never show it this time
+        Coming back from /retro/ is never rolled again, so the link back to the
+        proper site actually works.
+      */
+      (function () {
+        var q = location.search;
+        if (q.indexOf('retro=0') > -1) return;
+        if (q.indexOf('retro=1') > -1) { location.replace('/retro/index2.htm'); return; }
+        if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent || '')) return;
+        if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
+        if (document.referrer.indexOf('/retro/') > -1) return;
+        try {
+          if (sessionStorage.getItem('retroRoll')) return;
+          sessionStorage.setItem('retroRoll', '1');
+        } catch (e) {}
+        if (Math.random() < 0.05) location.replace('/retro/index2.htm');
+      })();
+    </script>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-family='system-ui,sans-serif' font-size='30' font-weight='700' fill='%23fff' text-anchor='middle'%3EAO%3C/text%3E%3C/svg%3E"

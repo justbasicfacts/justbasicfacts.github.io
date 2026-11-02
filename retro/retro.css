@@ -1,0 +1,458 @@
+/* retro.css - a homepage from 1997.
+   Default gray page, white sunken content field, navy banners, Times body text.
+   No design tokens, because nobody had any. */
+
+html {
+  background: #c0c0c0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><rect width='16' height='16' fill='%23c0c0c0'/><path d='M0 0h8v8H0zM8 8h8v8H8z' fill='%23b8b8b8'/><path d='M0 0h16v1H0zM0 0h1v16H0z' fill='%23d8d8d8'/></svg>");
+}
+
+body.page {
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 1.32;
+}
+
+body.page a { color: #0000ee; text-decoration: underline; }
+body.page a:visited { color: #551a8b; }
+body.page a:hover { color: #ff0000; background: #ffff99; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 10px 12px 30px 12px; }
+
+/* the strip at the very top, the one that tells you where you are */
+.topbar {
+  background: #000080;
+  color: #ffff00;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-bottom: 1px solid #000000;
+  overflow: hidden;
+}
+.topbar .clock { float: right; }
+.topbar b { color: #ffffff; font-weight: bold; }
+.topbar a { color: #00ffff; font-size: 10px; }
+
+/* nav row, for when the frames are off */
+.strip {
+  background: #ffffcc;
+  border: 1px solid #808080;
+  border-top: 0;
+  padding: 3px 6px;
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+}
+.strip a { margin: 0 1px; }
+.strip b { color: #800000; }
+
+/* the nav row is only for the standalone pages */
+body.framed .strip { display: none; }
+
+/* the banner */
+.masthead {
+  background: #000080;
+  border: 3px double #ffff00;
+  margin: 10px 0 0 0;
+  padding: 10px 8px 7px 8px;
+  text-align: center;
+}
+.masthead h1 {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffff00;
+  letter-spacing: 1px;
+}
+.masthead .subtitle {
+  color: #00ffff;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.masthead .subtitle a { color: #00ffff; }
+
+/* a smaller banner, for the inside pages */
+.masthead.sub { padding: 6px 8px 5px 8px; border: 2px solid #ffff00; margin: 10px 0 0 0; }
+.masthead.sub h1 { font-size: 24px; }
+.masthead.sub .subtitle { letter-spacing: 0; text-transform: none; font-size: 11px; }
+
+/* sunken white field, the way a table with border="1" used to look */
+.frame { background: #c0c0c0; border: 1px solid #000000; padding: 2px; margin: 0 0 8px 0; }
+.sheet { background: #ffffff; border: 2px solid; border-color: #808080 #e8e8e8 #e8e8e8 #808080; padding: 12px 16px 18px 16px; }
+
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000080;
+  text-align: center;
+  margin: 20px 0 6px 0;
+  line-height: 1.2;
+}
+h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #800000;
+  margin: 14px 0 4px 0;
+}
+p { margin: 0 0 9px 0; }
+ul { margin: 0 0 9px 26px; padding: 0; }
+ol { margin: 0 0 9px 26px; padding: 0; }
+li { margin: 0 0 3px 0; }
+blockquote { margin: 0 0 10px 18px; padding: 0 0 0 10px; border-left: 3px solid #c0c0c0; font-style: italic; }
+
+hr {
+  height: 4px;
+  border: 0;
+  margin: 14px 0;
+  background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+}
+hr.plain { height: 2px; background: #808080; }
+
+.small { font-size: 13px; }
+.tiny { font-family: Verdana, Arial, sans-serif; font-size: 10px; line-height: 1.45; color: #333333; }
+.center { text-align: center; }
+
+/* tables that look like FrontPage made them */
+.box { width: 100%; border-collapse: collapse; margin: 0 0 14px 0; border: 1px solid #808080; font-size: 14px; }
+.box.half { width: 49%; float: left; margin-right: 2%; }
+.box.half + .box.half { margin-right: 0; }
+.box td, .box th { border: 1px solid #a0a0a0; padding: 4px 6px; vertical-align: top; }
+.box td.head {
+  background: #000080;
+  color: #ffff00;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-color: #000080;
+}
+.box td.head.red { background: #800000; border-color: #800000; }
+.box td.head.green { background: #008000; border-color: #008000; color: #ffff00; }
+.box td.k { width: 155px; background: #f4f4f4; font-family: Verdana, Arial, sans-serif; font-size: 11px; color: #000000; }
+.box tr.alt td { background: #f8f8f8; }
+
+.chip {
+  display: inline-block;
+  border: 1px solid #808080;
+  background: #f0f0f0;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  padding: 0 3px;
+  margin: 0 3px 3px 0;
+  white-space: nowrap;
+}
+
+/* greeting line, Comic Sans because of course */
+.greet {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 22px;
+  color: #800080;
+  text-align: center;
+  margin: 2px 0 10px 0;
+  line-height: 1.2;
+}
+.greet small { display: block; font-size: 12px; color: #808080; }
+
+img.photo { border: 3px ridge #c0c0c0; padding: 2px; background: #ffffff; max-width: 100%; height: auto; }
+img.portrait { float: right; margin: 0 0 8px 14px; width: 130px; }
+.cap { font-family: Verdana, Arial, sans-serif; font-size: 10px; color: #404040; text-align: center; line-height: 1.3; }
+.photo-cell { text-align: center; }
+.clear { clear: both; height: 1px; overflow: hidden; }
+
+.counter {
+  background: #000000;
+  color: #00ff00;
+  border: 2px inset #c0c0c0;
+  font-family: Verdana, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 1px 5px;
+}
+
+.blink { animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+.newtag {
+  background: #ff0000;
+  color: #ffff00;
+  border: 1px solid #000000;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 0 2px;
+  letter-spacing: 1px;
+}
+.spin { display: inline-block; animation: spin 4s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* under construction, in CSS instead of a gif */
+.uc {
+  height: 14px;
+  border: 1px solid #000000;
+  margin: 6px 0 4px 0;
+  background: repeating-linear-gradient(45deg, #ffff00 0 9px, #000000 9px 18px);
+  background-size: 26px 26px;
+  animation: ucmove 1.1s linear infinite;
+}
+@keyframes ucmove { to { background-position: 26px 0; } }
+
+.marquee {
+  background: #ffffcc;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  color: #800000;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  padding: 2px 0;
+  margin: 0 0 12px 0;
+  position: relative;
+}
+.marquee .mq-tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #ff0000;
+  color: #ffff00;
+  border-right: 1px solid #000000;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2px 5px;
+  z-index: 2;
+}
+.marquee marquee { display: block; height: 15px; line-height: 15px; padding-left: 46px; }
+
+.badge88 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 88px;
+  height: 31px;
+  border: 1px solid #000000;
+  background: #000080;
+  color: #ffffff;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  padding: 1px;
+  margin: 2px 2px 2px 0;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.badge88.y { background: #ffff00; color: #000000; }
+.badge88.r { background: #800000; color: #ffff00; border-color: #ffff00; }
+.badge88.g { background: #008000; color: #ffffff; }
+
+/* the links in a badge have to beat the page link colours */
+body.page a.badge88, body.page a.badge88:visited { color: #ffffff; text-decoration: none; }
+body.page a.badge88.y, body.page a.badge88.y:visited { color: #000000; }
+body.page a.badge88.r, body.page a.badge88.r:visited { color: #ffff00; }
+body.page a.badge88:hover { background: #c0c0c0; color: #000000; }
+
+.soon { border: 2px dashed #808080; background: #f8f8f0; padding: 8px 10px; margin: 0 0 12px 0; }
+.soon b { color: #800000; }
+
+/* form controls, as the browser drew them in 1997 */
+input[type="text"], input[type="email"], textarea {
+  border: 2px inset #c0c0c0;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 1px 2px;
+}
+input[type="submit"], input[type="reset"] {
+  border: 2px outset #e8e8e8;
+  background: #c0c0c0;
+  color: #000000;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+}
+input[type="submit"]:active, input[type="reset"]:active { border-style: inset; }
+
+
+
+.rule-note { font-family: Verdana, Arial, sans-serif; font-size: 10px; color: #666666; text-align: center; letter-spacing: 2px; margin: 8px 0; }
+
+/* the little boxes that made a GeoCities page feel lived in */
+.sidebox {
+  border: 1px solid #808080;
+  background: #ffffcc;
+  padding: 6px 6px 7px 6px;
+  margin: 0 0 10px 0;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #000000;
+}
+.sidebox b.title {
+  display: block;
+  background: #000080;
+  color: #ffff00;
+  margin: -6px -6px 5px -6px;
+  padding: 2px 5px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.sidebox.red b.title { background: #800000; }
+.sidebox.red { background: #fff0f0; }
+.sidebox ul { margin: 0 0 0 14px; }
+.sidebox li { margin: 0 0 4px 0; }
+.sidebox a { font-size: 10px; }
+.sidebox .ring { text-align: center; font-size: 10px; margin: 4px 0 0 0; }
+.sidebox .ring a { margin: 0 2px; }
+
+/* a 468x60 banner, because every page carried one */
+.ad468 {
+  display: block;
+  width: 468px;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  margin: 8px auto;
+  border: 1px solid #808080;
+  background: #ffffcc;
+  color: #000080;
+  text-decoration: none;
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.25;
+  padding: 9px 6px 0 6px;
+  position: relative;
+}
+.ad468 small {
+  display: block;
+  font-size: 8px;
+  font-weight: normal;
+  color: #808080;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+.ad468 span { display: block; font-size: 9px; font-weight: normal; color: #800000; margin-top: 3px; }
+body.page a.ad468 { color: #000080; text-decoration: none; }
+body.page a.ad468:visited { color: #000080; }
+body.page a.ad468:hover { background: #ffff99; color: #ff0000; }
+
+
+.quote {
+  border: 3px double #808080;
+  background: #ffffcc;
+  padding: 8px 10px;
+  font-style: italic;
+  margin: 0 0 12px 0;
+}
+.quote .who { display: block; font-style: normal; font-family: Verdana, Arial, sans-serif; font-size: 10px; text-align: right; margin-top: 4px; }
+
+/* dated entries, the way a changelog used to be written */
+.entry { margin: 0 0 10px 0; padding: 0 0 6px 0; border-bottom: 1px dotted #a0a0a0; }
+.entry .when { font-family: Verdana, Arial, sans-serif; font-size: 10px; color: #800000; }
+.entry .what { font-size: 15px; }
+
+/* the visitor counter block at the bottom */
+.footer {
+  margin: 18px 0 0 0;
+  border-top: 2px solid #808080;
+  padding: 10px 0 0 0;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  color: #333333;
+}
+.footer a { font-size: 10px; }
+.footer .badges { margin: 8px 0; }
+
+/* the left frame */
+body.menu {
+  margin: 0;
+  padding: 6px 6px 20px 6px;
+  background: #ffffcc;
+  color: #000000;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: center;
+}
+
+body.menu .brand {
+  background: #000080;
+  border: 2px outset #c0c0c0;
+  color: #ffff00;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 5px 2px 4px 2px;
+  margin: 0 0 6px 0;
+}
+body.menu .brand small { display: block; font-family: Verdana, Arial, sans-serif; font-size: 8px; letter-spacing: 1px; color: #00ffff; font-weight: normal; }
+
+body.menu a.btn {
+  display: block;
+  background: #c0c0c0;
+  color: #000000;
+  border: 2px outset #e8e8e8;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 4px 2px;
+  margin: 0 0 3px 0;
+}
+body.menu a.btn:hover { background: #ffff00; color: #000000; }
+body.menu a.btn.on { background: #000080; color: #ffff00; border-style: inset; }
+
+body.menu .sep { border-top: 1px dotted #808080; margin: 8px 2px; }
+
+body.menu .side-note {
+  border: 1px dashed #808080;
+  background: #ffffff;
+  padding: 5px 4px;
+  margin: 6px 0;
+  font-size: 9px;
+  line-height: 1.5;
+  color: #333333;
+  text-align: left;
+}
+body.menu .side-note b { color: #800000; }
+body.menu .side-note a { font-size: 9px; }
+body.menu .tiny { font-size: 9px; color: #555555; }
+body.menu .badge88 { margin: 2px 1px; }
+body.menu .counter { font-size: 11px; letter-spacing: 1px; }
+
+/* narrow screens: keep the tables readable instead of squeezing columns */
+@media (max-width: 640px) {
+  body.page { font-size: 15px; }
+  .wrap { padding: 8px 6px 24px 6px; }
+  .masthead h1 { font-size: 26px; }
+  .sheet { padding: 10px 10px 14px 10px; }
+  img.portrait { float: none; display: block; margin: 0 auto 10px auto; width: 120px; }
+  .box td.k { width: auto; display: block; border-bottom: 0; }
+  .box td.k + td { display: block; }
+  .box.half { width: 100% !important; float: none; margin-right: 0; }
+  .cols td { display: block; width: auto !important; }
+  .sidebox { font-size: 11px; }
+  .sidebox a { font-size: 11px; }
+  .topbar .clock { float: none; display: block; }
+  .strip { line-height: 1.7; }
+}
