@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anıl Okay — Personal Web</title>
+<meta name="description" content="Anıl Okay, frontend developer in Berlin. Who am I, my work, off time." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Just+Another+Hand&display=swap" rel="stylesheet" />
+<style>
+  @font-face {
+    font-family: 'Anil Hand';
+    src: url('/fonts/AnilHand.ttf') format('truetype');
+    font-display: swap;
+  }
+  :root{
+    --paper:#f8f3e7;
+    --ink:#22232d;
+    --ink-soft:#5a5c6b;
+    --pen:#2b49c7;
+    --pen-soft:rgba(43,73,199,.20);
+    --desk:#141419;
+    --hand:"Anil Hand","Just Another Hand","Segoe Print","Bradley Hand",cursive;
+    --marker:"Anil Hand","Caveat","Segoe Print","Bradley Hand",cursive;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(1200px 700px at 50% -20%, #21212c 0%, var(--desk) 62%) fixed;
+    font-family:var(--hand);
+    color:var(--ink);
+    display:grid;
+    place-items:start center;
+    padding:clamp(20px,5vw,56px) clamp(12px,3vw,28px) 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .paper{
+    position:relative;
+    width:min(880px,100%);
+    background:var(--paper);
+    background-image:radial-gradient(rgba(34,35,45,.045) 1px, transparent 1px);
+    background-size:22px 22px;
+    padding:clamp(30px,5vw,68px) clamp(26px,5.5vw,74px) clamp(40px,6vw,72px);
+    border-radius:2px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.6) inset,
+      0 40px 80px -30px rgba(0,0,0,.8),
+      0 4px 14px rgba(0,0,0,.35);
+    transform:rotate(-.4deg);
+  }
+  /* the blue binding edge from the notepad */
+  .paper::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:linear-gradient(180deg,#33479c,#1d2a63);
+    border-radius:3px 0 0 3px;
+    opacity:.85;
+  }
+  .head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:16px 28px; flex-wrap:wrap;
+  }
+  .name{
+    font-family:var(--marker); font-weight:700;
+    font-size:clamp(54px,10vw,92px); line-height:.86;
+    margin:0; letter-spacing:-.01em;
+  }
+  .tag{
+    font-size:clamp(18px,2.4vw,24px); color:var(--ink-soft);
+    transform:rotate(-2deg); white-space:nowrap; padding-bottom:8px;
+  }
+
+  .rule{display:block; width:100%; height:14px; margin:16px 0 0; color:var(--ink);}
+  .rule path{
+    fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round;
+    stroke-dasharray:1100; stroke-dashoffset:1100;
+    animation:draw 1.3s ease .15s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .toc{display:flex; flex-direction:column; align-items:flex-start; gap:2px; margin:24px 0 4px;}
+  .toc a{
+    font-family:var(--marker); font-weight:600;
+    font-size:clamp(26px,4vw,34px); line-height:1.3;
+    color:var(--ink); text-decoration:none;
+    position:relative; padding:0 2px;
+    transform:rotate(-.5deg);
+  }
+  .toc a:nth-child(2){transform:rotate(.6deg);}
+  .toc a:nth-child(3){transform:rotate(-.2deg);}
+  .toc a::after{
+    content:""; position:absolute; left:0; right:0; bottom:3px; height:3px;
+    background:var(--pen-soft); border-radius:60% 40% 50% 50% / 50% 60% 40% 50%;
+    transform:scaleX(0); transform-origin:left; transition:transform .18s ease;
+  }
+  .toc a:hover::after,.toc a:focus-visible::after{transform:scaleX(1);}
+  .toc a:focus-visible{outline:2px dashed var(--pen); outline-offset:4px; border-radius:4px;}
+
+  .squiggles{display:block; width:44px; height:92px; margin:6px 0 0 4px; color:var(--ink); opacity:.6;}
+  .squiggles path{
+    fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round;
+    stroke-dasharray:120; stroke-dashoffset:120;
+    animation:draw 1s ease .7s forwards;
+  }
+
+  .block{margin-top:clamp(38px,7vw,68px); max-width:66ch;}
+  .block h2{
+    font-family:var(--marker); font-weight:600;
+    font-size:clamp(30px,4.8vw,44px); line-height:1.05;
+    margin:0 0 10px; display:inline-block; padding:0 2px;
+    transform:rotate(-.4deg);
+    background:linear-gradient(180deg, transparent 58%, var(--pen-soft) 58%, var(--pen-soft) 90%, transparent 90%);
+  }
+  .block p{
+    font-size:clamp(21px,2.5vw,25px); line-height:1.5;
+    margin:12px 0; color:var(--ink); text-wrap:pretty;
+  }
+
+  a{color:var(--pen); text-decoration:none; border-bottom:2px solid var(--pen-soft);}
+  a:hover{border-bottom-color:var(--pen);}
+  a:focus-visible{outline:2px dashed var(--pen); outline-offset:3px;}
+
+  .roles{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px;}
+  .roles li{
+    font-size:clamp(21px,2.5vw,25px); line-height:1.35;
+    padding-bottom:8px; border-bottom:2px dashed rgba(34,35,45,.16);
+  }
+  .roles .co{color:var(--pen);}
+  .roles .when{color:var(--ink-soft);}
+
+  .projects{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:9px;}
+  .projects li{font-size:clamp(21px,2.5vw,25px); line-height:1.4; padding-left:26px; position:relative;}
+  .projects li::before{
+    content:""; position:absolute; left:2px; top:.62em; width:9px; height:9px;
+    border:2px solid var(--pen); border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;
+    transform:rotate(12deg);
+  }
+  .projects .note{color:var(--ink-soft); font-size:.82em;}
+
+  .notes{display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:18px 0 0;}
+  .notes dt{font-family:var(--marker); font-weight:600; font-size:clamp(24px,3vw,30px); line-height:1.1;}
+  .notes dd{margin:0; font-size:clamp(21px,2.5vw,25px); line-height:1.45;}
+
+  .foot{margin-top:clamp(46px,8vw,80px);}
+  .foot .rule{height:12px; margin:0 0 14px;}
+  .foot p{font-size:clamp(20px,2.4vw,24px); color:var(--ink-soft); margin:0;}
+  .foot .switch{font-size:clamp(16px,1.9vw,19px); margin-top:8px;}
+  .foot a{color:var(--pen);}
+
+  @media (max-width:640px){
+    body{padding:0; background:var(--paper);}
+    .paper{transform:none; box-shadow:none; border-radius:0; width:100%; background-image:none;}
+    .paper::before{display:none;}
+    .tag{padding-bottom:2px;}
+    .notes{grid-template-columns:1fr; gap:2px 0;}
+    .notes dt{margin-top:12px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .rule path,.squiggles path{animation:none; stroke-dashoffset:0;}
+  }
+</style>
+</head>
+<body>
+  <main class="paper">
+    <header class="head">
+      <h1 class="name">Anıl Okay</h1>
+      <span class="tag">Personal Web</span>
+    </header>
+
+    <svg class="rule" viewBox="0 0 800 14" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M3 8 C 92 3, 152 11, 238 6 S 372 10, 462 5 S 612 11, 797 6" />
+    </svg>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#who">who am i?</a>
+      <a href="#work">my work</a>
+      <a href="#off">off time</a>
+    </nav>
+
+    <svg class="squiggles" viewBox="0 0 44 92" aria-hidden="true">
+      <path d="M12 5 c 8 -3 13 5 5 11 c -8 6 -2 15 6 17" />
+      <path d="M14 46 c 7 -2 12 5 5 10 c -7 5 -3 12 4 14" />
+      <path d="M11 84 c 6 -2 10 4 4 8" />
+    </svg>
+
+    <section class="block" id="who">
+      <h2>who am i?</h2>
+      <p>I'm Anıl, a frontend developer in Berlin. Sixteen years in, and most of my work has been on the plumbing side of the frontend: dashboards people use every day, component libraries other teams build on, and a few migrations nobody wanted to start.</p>
+      <p>These days I'm at APCOA Group, working on B2B parking platforms. Before that: Istanbul, then Berlin. VeriPark, ING Türkiye, Ladenzeile. Different domains each time, same job: take something complicated on the inside and make it usable on the outside.</p>
+      <p>Outside of work I keep coming back to framework-agnostic UI: web components, design tokens, and the tooling around them.</p>
+    </section>
+
+    <section class="block" id="work">
+      <h2>my work</h2>
+      <ul class="roles">
+        <li><span class="co">APCOA Group</span>, Senior Frontend Developer, <span class="when">2023 - now</span></li>
+        <li><span class="co">Ladenzeile</span>, Frontend Engineer, <span class="when">2021 - 2023</span></li>
+        <li><span class="co">ING Türkiye</span>, Full Stack Developer, <span class="when">2017 - 2021</span></li>
+        <li><span class="co">VeriPark</span>, <span class="when">2011 - 2016</span></li>
+      </ul>
+      <p>Things I'm proud of:</p>
+      <ul class="projects">
+        <li>Component library &amp; design system <span class="note">(personal, in progress)</span></li>
+        <li>B2B parking management dashboards</li>
+        <li>Dynamic Pricing Tool</li>
+        <li>Parking Product Configurator</li>
+        <li>B2B portal, Angular to React</li>
+        <li>Reusable web components for internet banking</li>
+      </ul>
+    </section>
+
+    <section class="block" id="off">
+      <h2>off time</h2>
+      <p>Not work: bikes, records, photos.</p>
+      <dl class="notes">
+        <dt>Cycling</dt>
+        <dd>82 rides this year, 3,287 km. All time, 1,318 rides and 50,529 km.</dd>
+        <dt>Music</dt>
+        <dd>75,852 scrobbles, 4,243 artists. Lately Lera Lynn, Egg and Turnstile.</dd>
+        <dt>Photos</dt>
+        <dd>Mostly bikes and roads.</dd>
+      </dl>
+    </section>
+
+    <footer class="foot">
+      <svg class="rule" viewBox="0 0 800 14" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M3 7 C 120 3, 210 11, 320 6 S 500 10, 610 5 S 720 10, 797 6" />
+      </svg>
+      <p>say hi: <a href="https://www.linkedin.com/in/anilokay/">LinkedIn</a> / <a href="https://github.com/justbasicfacts">GitHub</a> / <a href="mailto:okayster@gmail.com">email</a> / <a href="https://www.instagram.com/justbasicfacts/">Instagram</a></p>
+      <p class="switch">this is the handwritten version · <a href="/">back to the normal site</a></p>
+    </footer>
+  </main>
+</body>
+</html>

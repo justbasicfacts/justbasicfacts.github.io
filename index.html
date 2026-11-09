@@ -33,6 +33,7 @@
         var q = location.search;
         if (q.indexOf('retro=0') > -1) return;
         if (q.indexOf('retro=1') > -1) { location.replace('/retro/index2.htm'); return; }
+        if (q.indexOf('handwritten=1') > -1) { location.replace('/handwritten/'); return; }
         if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent || '')) return;
         if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
         if (document.referrer.indexOf('/retro/') > -1) return;
