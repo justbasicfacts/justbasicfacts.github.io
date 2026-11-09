@@ -197,6 +197,16 @@
     box-shadow:0 34px 52px -16px rgba(0,0,0,.62), 0 6px 14px rgba(0,0,0,.2);}
   .peek.on img{animation:floaty 5.5s ease-in-out infinite;}
   @keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(.5deg)}}
+  @keyframes jostle{
+    0%{transform:translate(-50%,-50%) rotate(-2deg) scale(1)}
+    18%{transform:translate(calc(-50% - 6px),calc(-50% + 4px)) rotate(-4.6deg) scale(1)}
+    36%{transform:translate(calc(-50% + 6px),calc(-50% - 4px)) rotate(.6deg) scale(1.01)}
+    54%{transform:translate(calc(-50% - 4px),calc(-50% - 3px)) rotate(-3.6deg) scale(1)}
+    72%{transform:translate(calc(-50% + 3px),calc(-50% + 2px)) rotate(-.8deg) scale(1)}
+    88%{transform:translate(calc(-50% - 1px),calc(-50% + 1px)) rotate(-2.5deg) scale(1)}
+    100%{transform:translate(-50%,-50%) rotate(-2deg) scale(1)}
+  }
+  .peek.shake{animation:jostle .36s cubic-bezier(.36,.07,.19,.97);}
   .peek img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#eee;}
   .peek .pcap{display:block; margin-top:7px; text-align:center; font-size:20px; line-height:1.1; color:var(--ink);}
   .peek::before{
@@ -232,6 +242,7 @@
     html{scroll-behavior:auto;}
     .rule path,.squiggles path{animation:none; stroke-dashoffset:0;}
     .peek.on img{animation:none;}
+    .peek.shake{animation:none;}
   }
 </style>
 </head>
@@ -332,6 +343,8 @@
       var lightImg = light.querySelector('img');
       var lightCap = light.querySelector('figcaption');
 
+      var lastPt = null, lastShake = 0;
+
       function place(x, y) {
         var w = peek.offsetWidth || 300;
         var h = peek.offsetHeight || 380;
@@ -351,9 +364,22 @@
           peekCap.textContent = cap;
           place(e.clientX, e.clientY);
           peek.classList.add('on');
+          lastPt = { x: e.clientX, y: e.clientY, t: performance.now() };
         });
         btn.addEventListener('pointermove', function (e) {
           place(e.clientX, e.clientY);
+          var now = performance.now();
+          if (lastPt) {
+            var dt = Math.max(6, now - lastPt.t);
+            var v = Math.hypot(e.clientX - lastPt.x, e.clientY - lastPt.y) / dt * 1000;
+            if (v > 950 && now - lastShake > 300) {
+              lastShake = now;
+              peek.classList.remove('shake');
+              void peek.offsetWidth;
+              peek.classList.add('shake');
+            }
+          }
+          lastPt = { x: e.clientX, y: e.clientY, t: now };
         });
         btn.addEventListener('pointerleave', function () {
           peek.classList.remove('on');
@@ -374,6 +400,10 @@
           if (typeof light.showModal === 'function') light.showModal();
           else light.setAttribute('open', '');
         });
+      });
+
+      peek.addEventListener('animationend', function () {
+        peek.classList.remove('shake');
       });
 
       light.addEventListener('click', function (e) {
