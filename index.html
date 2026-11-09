@@ -337,7 +337,7 @@
           <div class="now" id="now" hidden>
             <img class="art" alt="Album art" loading="lazy" />
             <div class="nowtext">
-              <span class="nowlabel"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="nowlabel">now playing</span></span>
+              <span class="nowlabel"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="nowlabel">now listening</span></span>
               <span class="track" id="nowtrack"></span>
             </div>
           </div>
@@ -480,7 +480,7 @@
             var artist = t.artist && (t.artist['#text'] || t.artist);
             if (typeof artist !== 'string') artist = '';
 
-            label.textContent = playing ? 'now playing' : 'last played';
+            label.textContent = playing ? 'now listening' : 'last listened';
             box.classList.toggle('playing', playing);
             trackEl.textContent = artist ? artist + ' · ' + t.name : t.name;
 
