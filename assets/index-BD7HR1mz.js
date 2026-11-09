@@ -2020,7 +2020,7 @@
               color="text.secondary"
             >
               <ui-link
-                href="/handwritten/"
+                href="/"
                 color="text.secondary"
                 underline="hover"
                 >handwritten version</ui-link

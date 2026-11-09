@@ -1,86 +1,506 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Anıl Okay - Senior Frontend Developer</title>
-    <meta
-      name="description"
-      content="Senior frontend developer in Berlin. React, TypeScript and web components: 16 years of building B2B products, component libraries and design systems."
-    />
-    <link rel="canonical" href="https://justbasicfacts.github.io/" />
-    <meta name="author" content="Anıl Okay" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Anıl Okay - Senior Frontend Developer" />
-    <meta
-      property="og:description"
-      content="React, TypeScript and web components. 16 years of building B2B products, component libraries and design systems."
-    />
-    <meta property="og:url" content="https://justbasicfacts.github.io/" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="theme-color" content="#0a0c0f" />
-    <script>
-      /*
-        The handwritten page is the front door and loads before anything
-        paints. The other two faces stay reachable:
-          ?normal=1  the normal build
-          ?retro=1   the home page from 1997
-        Crawlers and local dev get the normal build, so search and `pnpm dev`
-        still see the real app.
-      */
-      (function () {
-        var q = location.search;
-        if (q.indexOf('normal=1') > -1) return;
-        if (q.indexOf('retro=1') > -1) { location.replace('/retro/index2.htm'); return; }
-        if (q.indexOf('handwritten=1') > -1) { location.replace('/handwritten/'); return; }
-        if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent || '')) return;
-        if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
-        if (document.referrer.indexOf('/retro/') > -1) return;
-        location.replace('/handwritten/');
-      })();
-    </script>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-    <!--
-      Roboto Condensed, self-hosted: one variable file per subset instead of a
-      render-blocking third-party stylesheet, so the text can paint as soon as
-      the document and its own CSS arrive.
-    -->
-    <link
-      rel="preload"
-      href="/fonts/roboto-condensed-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <style>
-      @font-face {
-        font-family: 'Roboto Condensed';
-        font-style: normal;
-        font-weight: 300 700;
-        font-display: swap;
-        src: url('/fonts/roboto-condensed-latin-ext.woff2') format('woff2');
-        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
-          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
-          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
-          U+A720-A7FF;
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<script>
+  (function () {
+    var q = location.search;
+    if (q.indexOf('normal=1') > -1) { location.replace('/normal/'); return; }
+    if (q.indexOf('retro=1') > -1) { location.replace('/retro/index2.htm'); }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anıl Okay — Personal Web</title>
+<meta name="description" content="Anıl Okay, frontend developer in Berlin. Who am I, my work, off time." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Just+Another+Hand&display=swap" rel="stylesheet" />
+<style>
+  @font-face {
+    font-family: 'Anil Hand';
+    src: url('/fonts/AnilHand.ttf?v=4') format('truetype');
+    font-display: swap;
+  }
+  :root{
+    --paper:#f8f3e7;
+    --ink:#22232d;
+    --ink-soft:#5a5c6b;
+    --pen:#2b49c7;
+    --pen-soft:rgba(43,73,199,.20);
+    --desk:#141419;
+    --hand:"Anil Hand","Just Another Hand","Segoe Print","Bradley Hand",cursive;
+    --marker:"Anil Hand","Caveat","Segoe Print","Bradley Hand",cursive;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(1200px 700px at 50% -20%, #21212c 0%, var(--desk) 62%) fixed;
+    font-family:var(--hand);
+    color:var(--ink);
+    display:grid;
+    place-items:start center;
+    padding:clamp(20px,5vw,56px) clamp(12px,3vw,28px) 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .paper{
+    position:relative;
+    width:min(880px,100%);
+    background:var(--paper);
+    background-image:radial-gradient(rgba(34,35,45,.045) 1px, transparent 1px);
+    background-size:22px 22px;
+    padding:clamp(30px,5vw,68px) clamp(26px,5.5vw,74px) clamp(40px,6vw,72px);
+    border-radius:2px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.6) inset,
+      0 40px 80px -30px rgba(0,0,0,.8),
+      0 4px 14px rgba(0,0,0,.35);
+    transform:rotate(-.4deg);
+  }
+  /* the blue binding edge from the notepad */
+  .paper::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:linear-gradient(180deg,#33479c,#1d2a63);
+    border-radius:3px 0 0 3px;
+    opacity:.85;
+  }
+  .head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:16px 28px; flex-wrap:wrap;
+  }
+  .name{
+    font-family:var(--marker); font-weight:700;
+    font-size:clamp(54px,10vw,92px); line-height:.86;
+    margin:0; letter-spacing:-.01em;
+  }
+  .tag{
+    font-size:clamp(18px,2.4vw,24px); color:var(--ink-soft);
+    transform:rotate(-2deg); white-space:nowrap; padding-bottom:8px;
+  }
+
+  .rule{display:block; width:100%; height:14px; margin:16px 0 0; color:var(--ink);}
+  .rule path{
+    fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round;
+    stroke-dasharray:1100; stroke-dashoffset:1100;
+    animation:draw 1.3s ease .15s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .toc{display:flex; flex-direction:column; align-items:flex-start; gap:2px; margin:24px 0 4px;}
+  .toc a{
+    font-family:var(--marker); font-weight:600;
+    font-size:clamp(26px,4vw,34px); line-height:1.3;
+    color:var(--ink); text-decoration:none;
+    position:relative; padding:0 2px;
+    transform:rotate(-.5deg);
+  }
+  .toc a:nth-child(2){transform:rotate(.6deg);}
+  .toc a:nth-child(3){transform:rotate(-.2deg);}
+  .toc a::after{
+    content:""; position:absolute; left:0; right:0; bottom:3px; height:3px;
+    background:var(--pen-soft); border-radius:60% 40% 50% 50% / 50% 60% 40% 50%;
+    transform:scaleX(0); transform-origin:left; transition:transform .18s ease;
+  }
+  .toc a:hover::after,.toc a:focus-visible::after{transform:scaleX(1);}
+  .toc a:focus-visible{outline:2px dashed var(--pen); outline-offset:4px; border-radius:4px;}
+
+  .squiggles{display:block; width:44px; height:92px; margin:6px 0 0 4px; color:var(--ink); opacity:.6;}
+  .squiggles path{
+    fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round;
+    stroke-dasharray:120; stroke-dashoffset:120;
+    animation:draw 1s ease .7s forwards;
+  }
+
+  .block{margin-top:clamp(38px,7vw,68px); max-width:66ch;}
+  .block h2{
+    font-family:var(--marker); font-weight:600;
+    font-size:clamp(30px,4.8vw,44px); line-height:1.05;
+    margin:0 0 10px; display:inline-block; padding:0 2px;
+    transform:rotate(-.4deg);
+    background:linear-gradient(180deg, transparent 58%, var(--pen-soft) 58%, var(--pen-soft) 90%, transparent 90%);
+  }
+  .block p{
+    font-size:clamp(21px,2.5vw,25px); line-height:1.5;
+    margin:12px 0; color:var(--ink); text-wrap:pretty;
+  }
+
+  a{color:var(--pen); text-decoration:none; border-bottom:2px solid var(--pen-soft);}
+  a:hover{border-bottom-color:var(--pen);}
+  a:focus-visible{outline:2px dashed var(--pen); outline-offset:3px;}
+
+  .roles{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px;}
+  .roles li{
+    font-size:clamp(21px,2.5vw,25px); line-height:1.35;
+    padding-bottom:8px; border-bottom:2px dashed rgba(34,35,45,.16);
+  }
+  .roles .co{color:var(--pen);}
+  .roles .when{color:var(--ink-soft);}
+
+  .projects{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:9px;}
+  .projects li{font-size:clamp(21px,2.5vw,25px); line-height:1.4; padding-left:26px; position:relative;}
+  .projects li::before{
+    content:""; position:absolute; left:2px; top:.62em; width:9px; height:9px;
+    border:2px solid var(--pen); border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;
+    transform:rotate(12deg);
+  }
+  .projects .note{color:var(--ink-soft); font-size:.82em;}
+
+  .notes{display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:18px 0 0;}
+  .notes dt{font-family:var(--marker); font-weight:600; font-size:clamp(24px,3vw,30px); line-height:1.1;}
+  .notes dd{margin:0; font-size:clamp(21px,2.5vw,25px); line-height:1.45;}
+
+  .foot{margin-top:clamp(46px,8vw,80px);}
+  .foot .rule{height:12px; margin:0 0 14px;}
+  .foot p{font-size:clamp(20px,2.4vw,24px); color:var(--ink-soft); margin:0;}
+  .foot .switch{font-size:clamp(16px,1.9vw,19px); margin-top:8px;}
+  .foot a{color:var(--pen);}
+
+  /* photos, taped into the page */
+  .shots{list-style:none; padding:0; margin:16px 0 0; display:flex; flex-wrap:wrap; gap:16px 18px;}
+  .shots .shot{
+    all:unset; cursor:pointer; display:block; width:96px; position:relative;
+    transform:rotate(var(--r,-1.4deg));
+    transform-origin:50% 92%;
+    transition:transform .5s cubic-bezier(.2,.9,.25,1.1);
+  }
+  .shots li:nth-child(2) .shot{--r:1.4deg;}
+  .shots li:nth-child(3) .shot{--r:-.8deg;}
+  .shots li:nth-child(4) .shot{--r:1.9deg;}
+  .shots .shot:hover,.shots .shot:focus-visible{
+    transform:perspective(700px) rotateX(8deg) rotate(-1.8deg) translateY(-20px) scale(1.07);
+  }
+  .shots .shot:focus-visible{outline:2px dashed var(--pen); outline-offset:4px;}
+  .shots img{
+    display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#fff;
+    padding:5px 5px 18px;
+    box-shadow:0 1px 2px rgba(0,0,0,.2), 0 10px 18px -10px rgba(0,0,0,.45);
+    transition:box-shadow .38s ease;
+  }
+  .shots .shot:hover img,.shots .shot:focus-visible img{
+    box-shadow:0 30px 40px -14px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.2);
+  }
+  .shots .cap{display:block; margin-top:6px; text-align:center; font-size:15px; line-height:1.15; color:var(--ink-soft);}
+  .shots .shot::before{
+    content:""; position:absolute; z-index:2; top:-7px; left:50%; width:32px; height:13px;
+    transform:translateX(-50%) rotate(-2deg);
+    background:rgba(255,238,150,.75); box-shadow:0 1px 1px rgba(0,0,0,.08);
+    transition:opacity .22s ease, transform .35s ease;
+  }
+  .shots .shot:hover::before,.shots .shot:focus-visible::before{
+    opacity:0; transform:translateX(-50%) translateY(-9px) rotate(-9deg);
+  }
+  .peek{
+    position:fixed; left:0; top:0; z-index:40; width:min(300px,40vw);
+    pointer-events:none; opacity:0; transform:translate(-50%,-50%) rotate(-6deg) scale(.9);
+    transition:opacity .18s ease, transform .42s cubic-bezier(.18,.9,.24,1.12), box-shadow .42s ease;
+    background:#fff; padding:8px 8px 26px;
+    box-shadow:0 8px 14px -8px rgba(0,0,0,.4);
+  }
+  .peek.on{opacity:1; transform:translate(-50%,-50%) rotate(-2deg) scale(1);
+    box-shadow:0 34px 52px -16px rgba(0,0,0,.62), 0 6px 14px rgba(0,0,0,.2);}
+  .peek.on img{animation:floaty 5.5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(.5deg)}}
+  @keyframes jostle{
+    0%{transform:translate(-50%,-50%) rotate(-2deg) scale(1)}
+    18%{transform:translate(calc(-50% - 6px),calc(-50% + 4px)) rotate(-4.6deg) scale(1)}
+    36%{transform:translate(calc(-50% + 6px),calc(-50% - 4px)) rotate(.6deg) scale(1.01)}
+    54%{transform:translate(calc(-50% - 4px),calc(-50% - 3px)) rotate(-3.6deg) scale(1)}
+    72%{transform:translate(calc(-50% + 3px),calc(-50% + 2px)) rotate(-.8deg) scale(1)}
+    88%{transform:translate(calc(-50% - 1px),calc(-50% + 1px)) rotate(-2.5deg) scale(1)}
+    100%{transform:translate(-50%,-50%) rotate(-2deg) scale(1)}
+  }
+  .peek.shake{animation:jostle .36s cubic-bezier(.36,.07,.19,.97);}
+  .peek img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#eee;}
+  .peek .pcap{display:block; margin-top:7px; text-align:center; font-size:20px; line-height:1.1; color:var(--ink);}
+  .peek::before{
+    content:""; position:absolute; top:-9px; left:50%; width:56px; height:16px;
+    transform:translateX(-50%) rotate(-3deg);
+    background:rgba(255,238,150,.8); box-shadow:0 1px 1px rgba(0,0,0,.08);
+  }
+  .light{border:0; padding:0; background:transparent; max-width:min(92vw,640px);}
+  .light::backdrop{background:rgba(18,18,24,.78);}
+  .light figure{margin:0; background:#fff; padding:12px 12px 18px; box-shadow:0 40px 70px -24px rgba(0,0,0,.9);}
+  .light img{display:block; width:100%; height:auto; max-height:72vh; object-fit:contain;}
+  .light figcaption{margin-top:10px; text-align:center; font-size:22px; color:var(--ink);}
+  .light .close{
+    position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%;
+    border:0; padding:0; background:rgba(248,243,231,.95); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif; font-size:20px; line-height:34px;
+    text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.3);
+  }
+  @media (hover:none){ .peek{display:none;} }
+
+  /* now playing */
+  .now{
+    display:inline-flex; align-items:center; gap:10px; margin-top:12px;
+    padding:6px 12px 6px 6px; max-width:100%;
+    background:rgba(255,255,255,.6); border:1px solid rgba(34,35,45,.14); border-radius:3px;
+    transform:rotate(-.5deg); box-shadow:0 2px 6px rgba(0,0,0,.06);
+  }
+  .now[hidden]{display:none;}
+  .now .art{
+    width:42px; height:42px; object-fit:cover; display:block; flex:none;
+    transform:rotate(-1.5deg); box-shadow:0 2px 5px rgba(0,0,0,.22); background:#e9e3d4;
+  }
+  .now .art[hidden]{display:none;}
+  .now .nowtext{display:flex; flex-direction:column; gap:2px; min-width:0;}
+  .now .nowlabel{display:flex; align-items:center; gap:7px; font-size:14px; color:var(--ink-soft);}
+  .now .track{font-size:19px; line-height:1.15; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .now .eq{display:none; align-items:flex-end; gap:2px; height:13px;}
+  .now.playing .eq{display:inline-flex;}
+  .now .eq i{width:3px; height:5px; background:var(--pen); animation:eq .9s ease-in-out infinite;}
+  .now .eq i:nth-child(2){animation-delay:.18s;}
+  .now .eq i:nth-child(3){animation-delay:.36s;}
+  .now.playing .nowlabel{color:var(--pen);}
+  @keyframes eq{0%,100%{height:4px}50%{height:13px}}
+
+  @media (max-width:640px){
+    body{padding:0; background:var(--paper);}
+    .paper{transform:none; box-shadow:none; border-radius:0; width:100%; background-image:none;}
+    .paper::before{display:none;}
+    .tag{padding-bottom:2px;}
+    .notes{grid-template-columns:1fr; gap:2px 0;}
+    .notes dt{margin-top:12px;}
+    .shots{gap:14px 12px;}
+    .shots li{width:calc(50% - 6px);}
+    .shots .shot{width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .rule path,.squiggles path{animation:none; stroke-dashoffset:0;}
+    .peek.on img{animation:none;}
+    .peek.shake{animation:none;}
+  }
+</style>
+</head>
+<body>
+  <main class="paper">
+    <header class="head">
+      <h1 class="name">Anıl Okay</h1>
+      <span class="tag">Personal Web</span>
+    </header>
+
+    <svg class="rule" viewBox="0 0 800 14" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M3 8 C 92 3, 152 11, 238 6 S 372 10, 462 5 S 612 11, 797 6" />
+    </svg>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#who">who am i?</a>
+      <a href="#work">my work</a>
+      <a href="#off">off time</a>
+    </nav>
+
+    <svg class="squiggles" viewBox="0 0 44 92" aria-hidden="true">
+      <path d="M12 5 c 8 -3 13 5 5 11 c -8 6 -2 15 6 17" />
+      <path d="M14 46 c 7 -2 12 5 5 10 c -7 5 -3 12 4 14" />
+      <path d="M11 84 c 6 -2 10 4 4 8" />
+    </svg>
+
+    <section class="block" id="who">
+      <h2>who am i?</h2>
+      <p>I'm Anıl, a frontend developer in Berlin. Sixteen years in, and most of my work has been on the plumbing side of the frontend: dashboards people use every day, component libraries other teams build on, and a few migrations nobody wanted to start.</p>
+      <p>These days I'm at APCOA Group, working on B2B parking platforms. Before that: Istanbul, then Berlin. VeriPark, ING Türkiye, Ladenzeile. Different domains each time, same job: take something complicated on the inside and make it usable on the outside.</p>
+      <p>Outside of work I keep coming back to framework-agnostic UI: web components, design tokens, and the tooling around them.</p>
+    </section>
+
+    <section class="block" id="work">
+      <h2>my work</h2>
+      <ul class="roles">
+        <li><span class="co">APCOA Group</span>, Senior Frontend Developer, <span class="when">2023 - now</span></li>
+        <li><span class="co">Ladenzeile</span>, Frontend Engineer, <span class="when">2021 - 2023</span></li>
+        <li><span class="co">ING Türkiye</span>, Full Stack Developer, <span class="when">2017 - 2021</span></li>
+        <li><span class="co">VeriPark</span>, <span class="when">2011 - 2016</span></li>
+      </ul>
+      <p>Things I'm proud of:</p>
+      <ul class="projects">
+        <li>Component library &amp; design system <span class="note">(personal, in progress)</span></li>
+        <li>B2B parking management dashboards</li>
+        <li>Dynamic Pricing Tool</li>
+        <li>Parking Product Configurator</li>
+        <li>B2B portal, Angular to React</li>
+        <li>Reusable web components for internet banking</li>
+      </ul>
+    </section>
+
+    <section class="block" id="off">
+      <h2>off time</h2>
+      <p>Not work: bikes, records, photos.</p>
+      <dl class="notes">
+        <dt>Cycling</dt>
+        <dd>82 rides this year, 3,287 km. All time, 1,318 rides and 50,529 km.</dd>
+        <dt>Music</dt>
+        <dd>75,852 scrobbles, 4,243 artists. Lately Lera Lynn, Egg and Turnstile.
+          <div class="now" id="now" hidden>
+            <img class="art" alt="Album art" loading="lazy" />
+            <div class="nowtext">
+              <span class="nowlabel"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="nowlabel">now playing</span></span>
+              <span class="track" id="nowtrack"></span>
+            </div>
+          </div>
+        </dd>
+        <dt>Photos</dt>
+        <dd>Mostly bikes and roads.
+          <ul class="shots">
+            <li><button class="shot" type="button" data-shot="/photos/group-ride.jpg" data-caption="the group, strung out"><img src="/photos/group-ride.jpg" alt="A group of cyclists on a gravel road" loading="lazy"><span class="cap">the group</span></button></li>
+            <li><button class="shot" type="button" data-shot="/photos/country-road.jpg" data-caption="two riders, one lane"><img src="/photos/country-road.jpg" alt="Two cyclists on a country lane" loading="lazy"><span class="cap">one lane</span></button></li>
+            <li><button class="shot" type="button" data-shot="/photos/after-the-ride.jpg" data-caption="medal in hand"><img src="/photos/after-the-ride.jpg" alt="A rider holding a finisher medal" loading="lazy"><span class="cap">medal</span></button></li>
+            <li><button class="shot" type="button" data-shot="/photos/jersey.jpg" data-caption="kit on, ready to go"><img src="/photos/jersey.jpg" alt="A cyclist in full kit" loading="lazy"><span class="cap">kit</span></button></li>
+          </ul>
+        </dd>
+      </dl>
+    </section>
+
+    <footer class="foot">
+      <svg class="rule" viewBox="0 0 800 14" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M3 7 C 120 3, 210 11, 320 6 S 500 10, 610 5 S 720 10, 797 6" />
+      </svg>
+      <p>say hi: <a href="https://www.linkedin.com/in/anilokay/">LinkedIn</a> / <a href="https://github.com/justbasicfacts">GitHub</a> / <a href="mailto:okayster@gmail.com">email</a> / <a href="https://www.instagram.com/justbasicfacts/">Instagram</a></p>
+      <p class="switch">this is the handwritten version · <a href="/normal/">back to the normal site</a></p>
+    </footer>
+  </main>
+
+  <div class="peek" id="peek" aria-hidden="true"><img alt=""><span class="pcap"></span></div>
+
+  <dialog class="light" id="light">
+    <figure>
+      <img alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="close" type="button" aria-label="Close">×</button>
+  </dialog>
+
+  <script>
+    (function () {
+      var peek = document.getElementById('peek');
+      var peekImg = peek.querySelector('img');
+      var peekCap = peek.querySelector('.pcap');
+      var light = document.getElementById('light');
+      var lightImg = light.querySelector('img');
+      var lightCap = light.querySelector('figcaption');
+
+      var lastPt = null, lastShake = 0;
+
+      function place(x, y) {
+        var w = peek.offsetWidth || 300;
+        var h = peek.offsetHeight || 380;
+        var px = Math.min(window.innerWidth - w / 2 - 12, Math.max(w / 2 + 12, x + w * 0.62));
+        var py = Math.min(window.innerHeight - h / 2 - 12, Math.max(h / 2 + 12, y));
+        peek.style.left = px + 'px';
+        peek.style.top = py + 'px';
       }
-      @font-face {
-        font-family: 'Roboto Condensed';
-        font-style: normal;
-        font-weight: 300 700;
-        font-display: swap;
-        src: url('/fonts/roboto-condensed-latin.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+
+      Array.prototype.forEach.call(document.querySelectorAll('.shot'), function (btn) {
+        var src = btn.getAttribute('data-shot');
+        var cap = btn.getAttribute('data-caption');
+
+        btn.addEventListener('pointerenter', function (e) {
+          peekImg.src = src;
+          peekImg.alt = cap;
+          peekCap.textContent = cap;
+          place(e.clientX, e.clientY);
+          peek.classList.add('on');
+          lastPt = { x: e.clientX, y: e.clientY, t: performance.now() };
+        });
+        btn.addEventListener('pointermove', function (e) {
+          place(e.clientX, e.clientY);
+          var now = performance.now();
+          if (lastPt) {
+            var dt = Math.max(6, now - lastPt.t);
+            var v = Math.hypot(e.clientX - lastPt.x, e.clientY - lastPt.y) / dt * 1000;
+            if (v > 950 && now - lastShake > 300) {
+              lastShake = now;
+              peek.classList.remove('shake');
+              void peek.offsetWidth;
+              peek.classList.add('shake');
+            }
+          }
+          lastPt = { x: e.clientX, y: e.clientY, t: now };
+        });
+        btn.addEventListener('pointerleave', function () {
+          peek.classList.remove('on');
+        });
+        btn.addEventListener('focus', function () {
+          var r = btn.getBoundingClientRect();
+          place(r.right, r.top + r.height / 2);
+          peek.classList.add('on');
+        });
+        btn.addEventListener('blur', function () {
+          peek.classList.remove('on');
+        });
+
+        btn.addEventListener('click', function () {
+          lightImg.src = src;
+          lightImg.alt = cap;
+          lightCap.textContent = cap;
+          if (typeof light.showModal === 'function') light.showModal();
+          else light.setAttribute('open', '');
+        });
+      });
+
+      peek.addEventListener('animationend', function () {
+        peek.classList.remove('shake');
+      });
+
+      light.addEventListener('click', function (e) {
+        if (e.target === light) light.close();
+      });
+      light.querySelector('.close').addEventListener('click', function () {
+        light.close();
+      });
+    })();
+  </script>
+
+  <script>
+    /* live now playing, straight from Last.fm */
+    (function () {
+      var box = document.getElementById('now');
+      if (!box) return;
+      var KEY = 'fdf336d306ae49b6261ea05acbcbebb7';
+      if (!KEY || KEY.charAt(0) === '_') return;
+
+      var label = document.getElementById('nowlabel');
+      var trackEl = document.getElementById('nowtrack');
+      var art = box.querySelector('.art');
+      var url = 'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks'
+        + '&user=justbasicfacts&format=json&limit=1&api_key=' + encodeURIComponent(KEY);
+
+      function render() {
+        fetch(url, { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            var list = data && data.recenttracks && data.recenttracks.track;
+            var t = list && (list.length ? list[0] : list);
+            if (!t) { box.hidden = true; return; }
+
+            var playing = !!(t['@attr'] && t['@attr'].nowplaying === 'true');
+            var artist = t.artist && (t.artist['#text'] || t.artist);
+            if (typeof artist !== 'string') artist = '';
+
+            label.textContent = playing ? 'now playing' : 'last played';
+            box.classList.toggle('playing', playing);
+            trackEl.textContent = artist ? artist + ' · ' + t.name : t.name;
+
+            var imgs = t.image || [];
+            var best = imgs[imgs.length - 1];
+            var src = best && (best['#text'] || best);
+            if (src && src.indexOf('2a96cbd8') === -1) {
+              art.src = src;
+              art.hidden = false;
+            } else {
+              art.hidden = true;
+            }
+            box.hidden = false;
+          })
+          .catch(function () { /* keep whatever is on screen */ });
       }
-    </style>
-    <script type="module" crossorigin src="/assets/index-hiKfyMoF.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-sS-CO9Ph.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <site-page></site-page>
-  </body>
+
+      render();
+      setInterval(render, 60000);
+    })();
+  </script>
+</body>
 </html>
