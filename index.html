@@ -21,27 +21,22 @@
     <meta name="theme-color" content="#0a0c0f" />
     <script>
       /*
-        One visitor in twenty gets the other face of this site: a homepage from
-        1997, served from /retro/. It runs before anything paints, once per tab,
-        never for crawlers, and it leaves a way out:
-          ?retro=1  always show the retro page
-          ?retro=0  never show it this time
-        Coming back from /retro/ is never rolled again, so the link back to the
-        proper site actually works.
+        The handwritten page is the front door and loads before anything
+        paints. The other two faces stay reachable:
+          ?normal=1  the normal build
+          ?retro=1   the home page from 1997
+        Crawlers and local dev get the normal build, so search and `pnpm dev`
+        still see the real app.
       */
       (function () {
         var q = location.search;
-        if (q.indexOf('retro=0') > -1) return;
+        if (q.indexOf('normal=1') > -1) return;
         if (q.indexOf('retro=1') > -1) { location.replace('/retro/index2.htm'); return; }
         if (q.indexOf('handwritten=1') > -1) { location.replace('/handwritten/'); return; }
         if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent || '')) return;
         if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
         if (document.referrer.indexOf('/retro/') > -1) return;
-        try {
-          if (sessionStorage.getItem('retroRoll')) return;
-          sessionStorage.setItem('retroRoll', '1');
-        } catch (e) {}
-        if (Math.random() < 0.05) location.replace('/retro/index2.htm');
+        location.replace('/handwritten/');
       })();
     </script>
     <link
@@ -83,7 +78,7 @@
           U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CxW5vfw8.js"></script>
+    <script type="module" crossorigin src="/assets/index-hiKfyMoF.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-sS-CO9Ph.css">
   </head>
   <body>
