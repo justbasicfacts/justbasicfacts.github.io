@@ -156,32 +156,47 @@
   .shots{list-style:none; padding:0; margin:16px 0 0; display:flex; flex-wrap:wrap; gap:16px 18px;}
   .shots .shot{
     all:unset; cursor:pointer; display:block; width:96px; position:relative;
-    transform:rotate(var(--r,-1.4deg)); transition:transform .2s ease;
+    transform:rotate(var(--r,-1.4deg));
+    transform-origin:50% 92%;
+    transition:transform .5s cubic-bezier(.2,.9,.25,1.1);
   }
   .shots li:nth-child(2) .shot{--r:1.4deg;}
   .shots li:nth-child(3) .shot{--r:-.8deg;}
   .shots li:nth-child(4) .shot{--r:1.9deg;}
-  .shots .shot:hover,.shots .shot:focus-visible{transform:rotate(0) translateY(-5px);}
+  .shots .shot:hover,.shots .shot:focus-visible{
+    transform:perspective(700px) rotateX(8deg) rotate(-1.8deg) translateY(-20px) scale(1.07);
+  }
   .shots .shot:focus-visible{outline:2px dashed var(--pen); outline-offset:4px;}
   .shots img{
     display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#fff;
     padding:5px 5px 18px;
     box-shadow:0 1px 2px rgba(0,0,0,.2), 0 10px 18px -10px rgba(0,0,0,.45);
+    transition:box-shadow .38s ease;
+  }
+  .shots .shot:hover img,.shots .shot:focus-visible img{
+    box-shadow:0 30px 40px -14px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.2);
   }
   .shots .cap{display:block; margin-top:6px; text-align:center; font-size:15px; line-height:1.15; color:var(--ink-soft);}
   .shots .shot::before{
     content:""; position:absolute; z-index:2; top:-7px; left:50%; width:32px; height:13px;
     transform:translateX(-50%) rotate(-2deg);
     background:rgba(255,238,150,.75); box-shadow:0 1px 1px rgba(0,0,0,.08);
+    transition:opacity .22s ease, transform .35s ease;
+  }
+  .shots .shot:hover::before,.shots .shot:focus-visible::before{
+    opacity:0; transform:translateX(-50%) translateY(-9px) rotate(-9deg);
   }
   .peek{
     position:fixed; left:0; top:0; z-index:40; width:min(300px,40vw);
-    pointer-events:none; opacity:0; transform:translate(-50%,-50%) rotate(-3deg) scale(.96);
-    transition:opacity .15s ease, transform .18s ease;
+    pointer-events:none; opacity:0; transform:translate(-50%,-50%) rotate(-6deg) scale(.9);
+    transition:opacity .18s ease, transform .42s cubic-bezier(.18,.9,.24,1.12), box-shadow .42s ease;
     background:#fff; padding:8px 8px 26px;
-    box-shadow:0 22px 36px -14px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.18);
+    box-shadow:0 8px 14px -8px rgba(0,0,0,.4);
   }
-  .peek.on{opacity:1; transform:translate(-50%,-50%) rotate(-2deg) scale(1);}
+  .peek.on{opacity:1; transform:translate(-50%,-50%) rotate(-2deg) scale(1);
+    box-shadow:0 34px 52px -16px rgba(0,0,0,.62), 0 6px 14px rgba(0,0,0,.2);}
+  .peek.on img{animation:floaty 5.5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(.5deg)}}
   .peek img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#eee;}
   .peek .pcap{display:block; margin-top:7px; text-align:center; font-size:20px; line-height:1.1; color:var(--ink);}
   .peek::before{
@@ -216,6 +231,7 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .rule path,.squiggles path{animation:none; stroke-dashoffset:0;}
+    .peek.on img{animation:none;}
   }
 </style>
 </head>
